@@ -1,11 +1,11 @@
 ## How to Launch
 
-2. Install requirements:
+1. Install requirements:
 ```bash
 pip install -r requirements.txt
 ```
 
-3. Launch app:
+2. Launch app:
 ```bash
 cd app
 ```
@@ -13,14 +13,15 @@ cd app
 flask run
 ```
 
-5. Website access
-
+3. Website access
+```bash
 http://127.0.0.1:5000/
+```
 
 ## Descrição
 SIO project by: Nuno Pinho, Guilherme Santos, Adriano Costa, José Silva
 
-Creation of a store website using flask. Analyse and resolve vulnaribilities.
+Creation of a WebStore using flask. Analysis and resolvedness of vulnaribilities.
 
 
 
