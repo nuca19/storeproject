@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang = "en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>DetiStore</title>
+    <!-- STYLES.CSS -->
+    <link rel="stylesheet" href="{{url_for('static', filename='css/styles.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/userPage.css')}}">
+
+    <!-- ICONS -->
+     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+    <!-- HEADER -->
+    <header>
+        <!-- NAV -->
+        <div class="navbar container">
+            <a href="/home" class="logo"><h3>DETI<span>STORE</span></h3></a>
+            <!-- search -->
+            <form action="/search" method="GET" class="form">
+                <input type="text" name="search" class="search" placeholder="Search for a Product..">
+                <!-- <button type="submit" class="btn-search"><i class='bx bx-search '></i></button> -->
+                </form>
+            <!-- CART ICON -->
+            <a style="margin-left: 10cm;" href="/userPage" class="logo">My profile</a>
+            <a class='bx bxs-cart' href="/cart" id="cart-icon" style="color: white;"></a>
+
+            <a style="color: brown;" href="/logout" class="logo">Logout</a>
+        
+        </div>
+    </header>
+
+    <section class="shop container">
+        <!-- profile section -->
+        <div >
+            <h1 class="title" style="color:black;">Welcome to your profile, {{username}}!</h1>
+        </div>
+        <div>
+            <h3 style="margin-top: 3cm; color:black;">Last Purchases:</h3>
+        </div>
+
+        {% if result!=[] %}
+        {%for item in result%}
+        <div class="row fix">
+            <div class="card">
+                <h3>Encomenda#{{item[0]}} | {{item[1]}}$</h3>
+                <h4>Items:</h4>
+                <a>{{item[2]}}</a>
+                <p style="color:red">Delivery to {{item[3]}}</p>
+            </div>
+            <br>
+            <br>
+            <br>
+            
+        </div>
+        {% endfor %}
+
+        <div class="btn-group" style="margin-top: 400px;">
+            <form action="/export_data" method="get">
+                <button type="submit" >Export Data</button>
+            </form>
+            <form action="/delete_data" method="post">
+                <input type="hidden" name="csrf_token" value = "{{ csrf_token() }}" /> 
+                <button type="submit" >Delete Data</button>
+            </form>
+            <form action="/delete_account" method="post">
+                <input type="hidden" name="csrf_token" value = "{{ csrf_token() }}" /> 
+                <button type="submit" >Delete Account</button>
+                {% with messages = get_flashed_messages() %}
+                    {% if messages %}
+                        {% for message in messages %}
+                            <p style="color: red; padding-top: 49px;">{{ message }}</p>
+                        {% endfor %}
+                    {% endif %}        
+                {% endwith %}
+            </form>
+            <br>
+            <br>
+            <button id="showFormButton">Reorder</button>
+            <form action="/reorder" method="POST" id="myForm" style="display: none;">
+                <input type="hidden" name="csrf_token" value = "{{ csrf_token() }}" /> 
+                <br><br>
+                <label for="name">Encomenda ID:</label>
+                <input type="text" id="name" name="encid">
+                <input type="submit" value="Confirm">
+            </form>
+          </div>
+        {% else %}
+        <div>
+            <h4 style="color:red">No Purchases yet..</h4>
+            <a style="text-align: center;" href="/home">Go to the Store</a>
+        </div>
+
+        <div class="btn-group" style="margin-left: 40%; margin-top: 60px;">
+        <form action="/delete_account" method="post">
+            <input type="hidden" name="csrf_token" value = "{{ csrf_token() }}" /> 
+            <button type="submit" >Delete Account</button>
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    {% for message in messages %}
+                        <p style="color: red; padding-top: 49px; margin-left: -23%;">{{ message }}</p>
+                    {% endfor %}
+                {% endif %}        
+            {% endwith %}
+        </form>
+        {% endif %}
+        <br>
+    </section>
+    <script>
+        // JavaScript code to handle the button click and toggle form visibility
+        const showFormButton = document.getElementById("showFormButton");
+        const myForm = document.getElementById("myForm");
+    
+        showFormButton.addEventListener("click", function () {
+          if (myForm.style.display === "none" || myForm.style.display === "") {
+            myForm.style.display = "block";
+          } else {
+            myForm.style.display = "none";
+          }
+        });
+      </script>
+
+        
+    
+
+</body>
+</html>
+
+
+
+
+

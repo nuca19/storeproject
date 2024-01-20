@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang = "en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>DetiStore</title>
+    <!-- STYLES.CSS -->
+    <link rel="stylesheet" href="{{url_for('static', filename='css/styles.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/search   .css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/registerPage.css')}}">
+     <!-- ICONS -->
+     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+    <!-- HEADER -->
+    <header>
+        <!-- NAV -->
+        <div class="navbar container">
+            <a href="/" class="logo"><h3>DETI<span>STORE</span></h3></a>
+            <a href= "/login" class="logo">In order to buy you need to login</a>
+            
+        </div>
+    </header>
+
+    <div>
+        <div style="margin-top: 3cm;"class="wrapper centert">
+                <div class="wrap" >
+                    <div class="searchdiv">
+                        <form action="/search" method="GET">
+                            <input type="text" name="search" class="search"placeholder="Search for a Product..">
+                            <!-- <button type="submit" class="btn-search"><i class='bx bx-search '></i></button> -->
+                        </form>
+                    </div>
+                 </div>
+        </div>
+        
+</div>
+<section class="shop container">
+<div>
+
+    <h1 style="color:black;">Results for: "{{search}}"</h1>
+    {% for item in result %}
+    <p style="color:black;">{{ item[0] }}</p>
+    {% endfor %}
+</div>
+</section>
+</body>
+</html>

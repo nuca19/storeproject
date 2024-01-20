@@ -1,0 +1,77 @@
+@import url("https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&subset=devanagari,latin-ext");
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  user-select: none;
+}
+
+.card {
+  border-radius: 10px;
+  filter: drop-shadow(0 5px 10px 0 #ffffff);
+  width: 350px;
+  height: 200px;
+  background-color: #343a40;
+  padding: 20px;
+  position: relative;
+  z-index: 0;
+  color: white;
+}
+
+.card p{
+    padding: 10px 0;
+}
+
+.title {
+  font-size: 28px;
+  font-weight: 700;
+  color: #343a40;
+  text-align: center;
+}
+
+.fix {
+  float: left;
+  padding-top: 5px;
+  padding-left: 5px;
+}
+
+.t{
+  margin-top: 13cm;
+  text-align: center;
+}
+
+.btn-group button {
+  background-color: #343a40; /* Green background */
+  
+  border-radius: 2%;
+  color: white; /* White text */
+  padding: 10px 24px; /* Some padding */
+  cursor: pointer; /* Pointer/hand icon */
+  float: left; /* Float the buttons side by side */
+}
+
+.btn-group button:not(:last-child) {
+  border-right: none; /* Prevent double borders */
+}
+
+/* Clear floats (clearfix hack) */
+.btn-group:after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+/* Add a background color on hover */
+.btn-group button:hover {
+  background-color: #293139;
+}

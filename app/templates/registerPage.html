@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang = "en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>DetiStore</title>
+    <!-- STYLES.CSS -->
+    <link rel="stylesheet" href="{{url_for('static', filename='css/registerPage.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/pwstrenght.css')}}">
+    <!-- ICONS -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <style>
+      #hoverText {
+        display: none; /* Initially hiding the message */
+      }
+      #toggleButton:hover + #hoverText {
+        display: block; /* Show the message when button is hovered */
+      }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <header>
+        <!-- NAV -->
+        <div class="navbar container">
+          <a href="/" class="logo"><h3>DETI<span>STORE</span></h3></a>
+            <!-- LOGIN BUTTON -->
+            <a href="login" class="logo">LOGIN</a>
+        </div>
+    </header>
+    
+    <!-- register section -->
+        <div class="register-container">
+            <div class="wrapper">
+              <div class="title"><span> Register </span></div>
+              <form action="/register" method="Post">
+                <input type="hidden" name="csrf_token" value = "{{ csrf_token() }}" /> 
+                <div class="row">
+                  <i class="fas fa-user"></i>
+                  <input type="email" placeholder="Email" name='email' required>
+                </div>
+                <div class="row">
+                  <i class="fas fa-lock"></i>
+                  <input type="text" placeholder="Username" name= 'username' required>
+                </div>
+                <div class="row">
+                  <i class="fas fa-lock"></i>
+                  <input type="password" placeholder="Password" id="password" name='password'  required minlength="12" required>
+                </div>
+                <div class="row">
+                  <i class="fas fa-lock"></i>
+                  <input style="margin-bottom: 60px;"  type="password" placeholder="Confirm Password" id="confirm_password"  required>
+                </div>
+                <div class="row button">
+                  <input type="submit" value="Register now">
+                </div>
+              </form>
+              {% if message %}
+                    <p style="color: red; text-align: center;">{{ message }}</p>
+              {% endif %}
+            </div>
+            <div class="group">
+              <label for=""> Strength of password </label> 
+              <div class="power-container"> 
+                  <div id="power-point"></div> 
+              </div>  
+          </div> 
+          <button id="toggleButton">help</button>
+          <a id="hoverText">Use a combination of at least 12 characters, including numbers, special characters (such as !, @, #, etc.), and uppercase letters to ensure a stronger and more secure password.</a>
+          </div>
+
+          <script src="{{url_for('static', filename='js/registerPage.js')}}"></script>
+</body>

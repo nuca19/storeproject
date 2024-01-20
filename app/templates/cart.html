@@ -1,0 +1,91 @@
+<html lang = "en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>DetiStore</title>
+    <!-- STYLES.CSS -->
+    <link rel="stylesheet" href="{{url_for('static', filename='css/styles.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/cart.css')}}">
+
+    <!-- ICONS -->
+     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+    <!-- HEADER -->
+    <header>
+        <!-- NAV -->
+        <div class="navbar container">
+            <a href="/home" class="logo"><h3>DETI<span>STORE</span></h3></a>
+            <!-- search -->
+            <form action="/search" method="GET" class="form">
+                <input type="text" name="search" class="search" placeholder="Search for a Product..">
+                <!-- <button type="submit" class="btn-search"><i class='bx bx-search '></i></button> -->
+                </form>
+            <!-- CART ICON -->
+            <a style="margin-left: 10cm;" href="/userPage" class="logo">My profile</a>
+            <a class='bx bxs-cart' href="/cart" id="cart-icon" style="color: white;"></a>
+
+            <a style="color: brown;" href="/logout" class="logo">Logout</a>
+        
+        </div>
+    </header>
+
+    <h1 style="margin-top: 4cm; color: black; text-align: center;">My cart</h1>
+    <!-- cart section -->
+    <div style="margin-top: 2cm; margin-right: 1m;">
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Quantity</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in carrinho %}
+                {% if item != 'total' %}
+                <tr>
+                    <td>{{ carrinho[item]['name'] }}</td>
+                    <td>{{ carrinho[item]['price'] }}$</td>
+                    <td>{{ carrinho[item]['quantity'] }}</td>
+                </tr>
+                {% endif %}
+            {% endfor %}
+            {% if carrinho['total'] != 0 %}
+            <table>
+                <thead>
+                    <tr>
+                        <th>Total: </th>
+                        <th>{{ carrinho['total'] }}$</th>
+                        <th>
+                            <form action="/checkout" method="POST">
+                                <input type="hidden" name="csrf_token" value = "{{ csrf_token() }}" /> 
+                            <button type="submit" class="checkout">Checkout</button>
+                            </form>
+                        </th>
+                    </tr>
+                </thead>
+                <thead>
+                    <th>
+                        <form action="/removecart" method="POST">
+                            <input type="hidden" name="csrf_token" value = "{{ csrf_token() }}" /> 
+                            <button type="submit"  class="clean">Clean Cart</button>
+                        </form>
+                    </th>
+                    <th></th>
+                    <th></th>
+                </thead>
+            </table>
+            {% else %}
+            <table>
+                <thead>
+                    <tr>
+                        <td>No items in the cart...</td>
+                    </tr>
+                </thead>
+            {% endif %}
+        </tbody>
+    </table>
+</body>
+</html>

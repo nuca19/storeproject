@@ -1,0 +1,156 @@
+/* FONT */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+* {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    scroll-padding-top: 2rem;
+    scroll-behavior: smooth;
+    box-sizing: border-box;
+    list-style: none;
+    text-decoration: none;
+}
+
+:root {
+    --main-color: #000000;
+    --text-color: #ffffff;
+    --bg-color: #272b2c;
+}
+
+
+body {
+    color: black;
+}
+
+.container {
+    max-width: 1068px;
+    margin: auto;
+    width: 100%;
+}
+
+/* header */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: var(--bg-color);
+    box-shadow: 0 1px 4px hsl(0 4% 15% / 10%);
+    z-index: 100;
+}
+  /* The company logo */
+  
+  h3{
+    color:  #ffffff;
+    margin: 0;
+  }
+  
+h3 span{
+    color:  lightseagreen;
+  }
+  
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 0;
+}
+
+.logo {
+    font-size: 1.1rem;
+    color: var(--text-color);
+    font-weight: 800;
+}
+
+section {
+    padding: 4rem 0 3rem;
+}
+
+.section-title {
+    font-size: 1.5rem;
+    font-weight: 800;
+    text-align: center;
+    color: var(--main-color);
+    margin-bottom: 1rem;
+}
+
+.register-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+
+}
+
+.register-container{
+    max-width: 440px;
+    padding: 0 20px;
+    margin: 170px auto;
+  }
+.wrapper{
+    width: 100%;
+    background: #fff;
+    border-radius: 5px;
+    box-shadow: 0px 4px 10px 1px rgba(0,0,0,0.1);
+  }
+.wrapper .title{
+    height: 90px;
+    background: var(--bg-color);
+    border-radius: 5px 5px 0 0;
+    color: var(--text-color);
+    font-size: 30px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+.wrapper form{
+    padding: 30px 25px 25px 25px;
+  }
+  .wrapper form .row{
+    height: 45px;
+    margin-bottom: 15px;
+    position: relative;
+  }
+.wrapper form .row input{
+    height: 100%;
+    width: 100%;
+    outline: none;
+    padding-left: 60px;
+    border-radius: 5px;
+    border: 1px solid lightgrey;
+    font-size: 16px;
+    transition: all 0.3s ease;
+  }
+
+form .row input::placeholder{
+    color: #999;
+  }
+.wrapper form .row i{
+    position: absolute;
+    width: 47px;
+    height: 100%;
+    color: var(--text-color);
+    font-size: 18px;
+    background: var(--bg-color);
+    border: 1px solid var(--bg-color);
+    border-radius: 5px 0 0 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+.wrapper form .button input{
+    color: var(--text-color);
+    font-size: 20px;
+    font-weight: 500;
+    padding-left: 0px;
+    background: var(--bg-color);
+    border: 1px solid var(--bg-color);
+    cursor: pointer;
+  }
+
+  .centert{
+    text-align: center;
+  }

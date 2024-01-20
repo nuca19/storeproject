@@ -1,0 +1,55 @@
+
+<!DOCTYPE html>
+<html lang = "en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>DetiStore</title>
+    <!-- STYLES.CSS -->
+    <link rel="stylesheet" href="{{url_for('static', filename='css/registerPage.css')}}">
+     <!-- ICONS -->
+     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+    <!-- HEADER -->
+    <header>
+        <!-- NAV -->
+        <div class="navbar container">
+          <a href="/" class="logo"><h3>DETI<span>STORE</span></h3></a>
+            <!-- LOGIN BUTTON -->
+        </div>
+    </header>
+    
+    <!-- register section -->
+        <div class="register-container">
+            <div class="wrapper">
+              <div class="title"><span> Login </span></div>
+              <form action="/login" method="POST">
+                <input type="hidden" name="csrf_token" value = "{{ csrf_token() }}" /> 
+                <div class="row">
+                  <i class="fas fa-lock"></i>
+                  <input type="text" placeholder="Username" name="username" required>
+                </div>
+                <div class="row">
+                  <i class="fas fa-lock"></i>
+                  <input type="password" placeholder="Password" name="password" required maxlength="128" required>
+                </div>
+                  <div class="row button">
+                  <input type="submit" value="Log in ">
+                </div>
+                {% if message %}
+                  <p style="color: red; text-align: center;">{{ message }}</p>
+                {% endif %}
+                <div class="centert">
+                    <a>Don't have an account?</a>
+                    <a href="/register">Register</a>
+                </div>
+                <div class="centert">
+                  <a>Forgot your password?</a>
+                  <a href="/newPassword">Change Password</a>
+              </div>
+              </form>
+            </div>
+          </div>
+</body>
